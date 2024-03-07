@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Service Data Pasien</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Data Pasien</h1>
+
+<table id="table-data-pasien">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Penyakit</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody id="data-pasien-container"></tbody>
+
+    <script>
+        // Lakukan permintaan HTTP GET saat halaman dimuat
+        fetch('http://localhost:5000/data-pasien')
+            .then(response => response.json())
+            .then(data => displayDataPasien(data))
+            .catch(error => console.error('Error:', error));
+
+        function displayDataPasien(data) {
+            // Buat tampilan HTML dari data pasien
+            const tbody = document.getElementById('data-pasien-container');
+
+            data.forEach(pasien => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${pasien.id}</td><td>${pasien.nama}</td><td>${pasien.diagnosis}</td><td><a href="/detail/${pasien.id}">Lihat Detail</a></td>`;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+
+</body>
+</html>

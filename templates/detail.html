@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Pasien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detail Pasien</h1>
+    <h2>ID Pasien: {{ pasien['id'] }}</h2>
+    <!-- Tabel 1 -->
+    <h2>Data Pasien</h2>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Jenis Kelamin</th>
+        </tr>
+        <tr>
+            <td>{{ pasien['nama'] }}</td>
+            <td>{{ pasien['dob'] }}</td>
+            <td>{{ pasien['gender'] }}</td>
+        </tr>
+    </table>
+
+    <!-- Tabel 2 -->
+    <h2>Informasi Penyakit</h2>
+    <table>
+        <tr>
+            <th>Penyakit</th>
+        </tr>
+        <tr>
+            <td>{{ pasien['diagnosis'] }}</td>
+        </tr>
+    </table>
+
+    <!-- Tabel 3 -->
+    <h2>Hasil Pemeriksaan</h2>
+    <table>
+        <tr>
+            <th>Tanggal Pemeriksaan</th>
+            <th>Hasil</th>
+        </tr>
+        <tr>
+            <td>{{ pasien['checkup']['checkupDate'] }}</td>
+            <td>{{ pasien['checkup']['result'] }}</td>
+        </tr>
+    </table>
+
+    <!-- Tautan kembali ke halaman utama -->
+    <a href="/">Kembali ke Data Pasien</a>
+</body>
+</html>
